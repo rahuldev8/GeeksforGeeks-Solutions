@@ -13,20 +13,20 @@ Explanation:1 appears 4 times.
 
 class Solution
 {
-    public:
-    int count(struct node* head, int target)
+    public static int count(Node head, int x)
     {
-    //add your code here
-    int ans=0;
-    struct node* th = head;
-    while(th!=NULL)
-    {
-        if(th->data == target)ans++;
-        th=th->next;
+        //code here
+        int count = 0;
+        while(head!=null)
+        {
+            if(head.data == x)count++;
+            head = head.next;
+        }
+        return count;
     }
-    return ans;
-    }
-};
+    //Time Complexity : o(n)
+    //Space Complexity : o(1)
+}
 
 //Time Complexity : o(n)
 //Space Complexity : o(1)
