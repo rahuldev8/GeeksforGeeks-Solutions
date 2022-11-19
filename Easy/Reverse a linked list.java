@@ -11,24 +11,26 @@ elements are 6->5->4->3->2->1.
 
 */
 
-struct Node* reverseList(struct Node *head)
+class Solution
+{
+    //Function to reverse a linked list.
+    Node reverseList(Node head)
     {
-        typedef struct Node Node;
+        // code here
+        Node prev = null;
+        Node curr = head;
+        Node next = null;
         
-        Node* prev = NULL;
-        Node* curr = head;
-        Node* next = NULL;
-        
-        while(curr != NULL)
+        while(curr!=null)
         {
-            next=curr->next;
-            curr->next=prev;
+            next = curr.next;
+            curr.next = prev;
             
             prev = curr;
             curr = next;
         }
         return prev;
-        
-        //Time Complexity : o(n)
-        //Space Complexity : o(1)
     }
+}
+ //Time Complexity : o(n)
+        //Space Complexity : o(1)
