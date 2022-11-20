@@ -41,34 +41,31 @@ After merging and sorting the
 two BST we get 2 5 6 8 9 10 11 12.
 */
 
+
 class Solution
 {
-    public:
     //Function to return a list of integers denoting the node 
     //values of both the BST in a sorted order.
-    
-    
-    //User defined function to traverse a given tree ans push all values to vector
-    void result(Node* root,vector<int>&v)
+    public static void travel(Node root, List<Integer>list)
     {
-        if(root==NULL)return;
+        if(root==null)return;
         
-        v.push_back(root->data);
-        result(root->left,v);
-        result(root->right,v);
-        
+        if(root.left!=null)travel(root.left, list);
+        list.add(root.data);
+        if(root.right!=null)travel(root.right, list);
     }
-    vector<int> merge(Node *root1, Node *root2)
+    public List<Integer> merge(Node root1,Node root2)
     {
-       //Your code here
-       vector<int>v;
-       result(root1,v);//passing first tree
-       result(root2,v);//passing second tree
-       
-       sort(v.begin(), v.end());//sorting the final vector
-       return v;
-       
-       //Time Complexity : o(n log n) due to vector sort
+        // Write your code here
+        List<Integer> list = new ArrayList<Integer>();
+        
+        
+        travel(root1,list);//passing first tree
+        travel(root2,list);//passing second tree
+        
+        Collections.sort(list);//sorting the final list
+        
+        return list;
+    }
+}      //Time Complexity : o(n log n)
        //Space Complexity : o(n)
-    }
-};
