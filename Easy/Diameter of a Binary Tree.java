@@ -61,3 +61,34 @@ class Solution {
         //Space Complexity : o(n)
     }
 };
+
+
+
+//Java Solution
+
+
+class Solution {
+    // Function to return the diameter of a Binary Tree.
+    int height(Node root)
+    {
+        if(root==null)return 0;
+        
+        int left = height(root.left);
+        int right = height(root.right);
+        
+        return 1+Math.max(left, right);
+    }
+    int diameter(Node root) {
+        
+        if(root==null)return 0;
+        
+        int lh = height(root.left);
+        int rh = height(root.right);
+        
+        int lw = diameter(root.left);
+        int rw = diameter(root.right);
+        
+        return Math.max(Math.max(lw,rw), 1+lh+rh);
+        // Your code here
+    }
+}
