@@ -39,3 +39,26 @@ class Solution{
         //Space Complexity : o(n)
     }
 };
+
+
+//Solution in Java
+
+class Solution {
+    //Function to find the height of a binary tree.
+    
+    int travel(Node root)
+    {
+        if(root==null)return 0;
+        
+        int left = travel(root.left);
+        int right = travel(root.right);
+        
+        return 1+Math.max(left, right);
+    }
+    int height(Node node) 
+    {
+        // code here 
+        int sum = travel(node);
+        return sum;
+    }
+}
