@@ -55,3 +55,49 @@ class Solution
         //Space Complexity : o(n)
     }
 }
+
+
+//Optimized Solution
+class Solution
+{
+    //Function to count number of nodes in BST that lie in the given range.
+    int getCount(Node root,int l, int h)
+    {
+        int nodes = 0;
+        //Morris Traversal
+        Node curr = root;
+        while(curr!=null)
+        {
+            //case 1 : if there is no subtree present in left
+            if(curr.left==null)
+            {
+                if(curr.data >= l && curr.data <= h) nodes++;
+                curr = curr.right;
+            }
+            else
+            {
+                Node thread = curr.left;
+                //going to left subtree's right most element
+                while(thread.right != null && thread.right != curr)
+                    thread = thread.right;
+                    
+                //case 2 : if thread is not present
+                if(thread.right == null)
+                {
+                    thread.right = curr;
+                    curr = curr.left;
+                }
+                //case 3 : if thread is present already
+                else
+                {
+                    thread.right = null;
+                    if(curr.data >= l && curr.data <= h) nodes++;
+                    curr = curr.right;
+                }
+            }
+        }
+        return nodes;
+        //Time Complexity : o(n)
+        //Space Complexity : o(1)
+    }
+}
