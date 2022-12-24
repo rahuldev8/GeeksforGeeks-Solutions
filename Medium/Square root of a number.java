@@ -34,3 +34,32 @@ class Solution
 		//Space Complexity : o(1)
 	 }
 }
+
+//Using Binary Search
+class Solution
+{
+     long floorSqrt(long x)
+	 {
+		//Binary Search
+		long start =1;
+		long end = x;
+		long ans = 0;
+		
+		while(start<=end)
+		{
+		    long mid = start+(end-start)/2;
+		    //to avoid overflow
+		    if(mid <= x/mid)
+		    {
+		        ans = mid;
+		        start = mid+1;
+		    }
+		    else
+		        end = mid-1;
+		}
+		
+		return ans;
+		//Time Complexity : O(log N)
+		//Space Complexity : O(1)
+	 }
+}
